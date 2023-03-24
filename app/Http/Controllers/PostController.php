@@ -113,10 +113,12 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($request)
     {
-        Post::destroy($request->slug);
+        // Post::destroy($request);
         // // $request->session()->flash('success', 'Registration successfully..!');
+        Post::where('slug', $request)->delete();
+
         return redirect('/post')->with('success', 'Post ha been delete..!');
     }
     public function checkSlug(Request $request)

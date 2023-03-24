@@ -7,7 +7,7 @@
     {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}" /> --}}
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
-      <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" required autofocus value="{{ old('title') }}"> 
+      <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" autofocus value="{{ old('title') }}"> 
       @error('title')
       <div class="invalid-feedback">
         {{ $message }}
@@ -16,7 +16,7 @@
     </div>
     <div class="mb-3">
       <label for="slug" class="form-label">Slug</label>
-      <input type="text" name="slug" id="slug" class="form-control @error('slug') is-invalid @enderror" required value="{{ old('slug') }}" readonly="" > 
+      <input type="text" name="slug" id="slug" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug') }}" readonly="" > 
       @error('slug')
       <div class="invalid-feedback">
         {{ $message }}
@@ -25,7 +25,7 @@
     </div>
     <div class="mb-3">
       <label for="exceprt" class="form-label">Exceprt</label>
-      <input type="text" name="exceprt" id="exceprt" class="form-control @error('exceprt') is-invalid @enderror" required value="{{ old('exceprt') }}"> 
+      <input type="text" name="exceprt" id="exceprt" class="form-control @error('exceprt') is-invalid @enderror" value="{{ old('exceprt') }}"> 
       @error('exceprt')
       <div class="invalid-feedback">
         {{ $message }}
@@ -34,7 +34,7 @@
     </div>
     <div class="mb-3">
       <label for="body" class="form-label">Body</label>
-      <textarea name="body" id="body" class="form-control @error('body') is-invalid @enderror" required value="{{ old('body') }}"> </textarea>
+      <textarea name="body" id="body" class="form-control @error('body') is-invalid @enderror" value="{{ old('body') }}"> </textarea>
       @error('body')
       <div class="invalid-feedback">
         {{ $message }}

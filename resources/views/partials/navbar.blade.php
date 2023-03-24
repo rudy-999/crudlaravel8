@@ -22,6 +22,34 @@
             <a class="nav-link {{ $title=='Register' ? 'active':'' }}" href="/register">Register</a>
           </li>
         </ul>
+        
+        <ul class="navbar-nav ms-auto">
+          @auth
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Welcome, {{ auth()->user()->name }}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/register">user</a></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <form action="/logout" method="post">
+              @csrf
+              <button class="btn btn-outline-success" type="submit">logout</button>
+              {{-- <a class="nav-link" href="/logout">Logout</a> --}}
+            </form>
+          </li>
+            @else
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+          @endauth
+
+        </ul>
       </div>
     </div>
   </nav>

@@ -4,8 +4,9 @@
 use App\Models\Post;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -32,12 +33,12 @@ Route::get('/', function () {
 
 Route::get('/karyawan', [KaryawanController::class, 'index']);
 
-Route::get('/post', [PostController::class, 'index']);
+Route::get('/post', [PostController::class, 'index'])->middleware('auth');
 Route::get('/postCreate', [PostController::class, 'create']);
 Route::post('/postStore', [PostController::class, 'store']);
 Route::get('/post/checkSlug', [PostController::class, 'checkSlug']);
 Route::get('/postEdit/{post:slug}', [PostController::class, 'edit']);
-Route::get('/postDelete/{post:slug}', [PostController::class, 'destroy']);
+Route::get('/postDelete/{slug}', [PostController::class, 'destroy']);
 Route::post('/postUpdate/{post:slug}', [PostController::class, 'update']);
 
 Route::get('/about', [PostController::class, 'index']);
@@ -45,3 +46,8 @@ Route::get('/abouts/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
+
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
